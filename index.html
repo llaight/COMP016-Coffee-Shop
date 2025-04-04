@@ -44,7 +44,7 @@
                 <h1>Welcome to Caferiel</h1>
                 <p>Your go-to destination for everything coffee—where passion meets aroma, and every cup tells a story.</p>
                 <div class="buttons">
-                    <a href="#" class="btn order-now">Order Now</a>
+                    <a href="#menu" class="btn order-now">Order Now</a>
                     <a href="#" class="btn contact-us">Contact Us</a>
                 </div>
             </div>
@@ -61,25 +61,25 @@
                     <li class="menu-item">
                         <img src="img/hot-beverages.png" alt="menu" class="menu-img">
                         <h2 class="name">Espresso</h2>
-                        <p class="text">A rich and intense shot of coffee, delivering<br> bold flavors with a velvety crema.</p>
+                        <p class="text">A rich and intense shot of coffee, delivering bold flavors with a velvety crema.</p>
                     </li>
 
                     <li class="menu-item">
                         <img src="img/cold-beverages.png" alt="menu" class="menu-img">
                         <h2 class="name">Cold Americcano</h2>
-                        <p class="text">Smooth and refreshing, this chilled espresso-based<br> drink offers a bold coffee kick with a crisp finish.</p>
+                        <p class="text">Smooth and refreshing, this chilled espresso-based drink offers a bold coffee kick with a crisp finish.</p>
                     </li>
 
                     <li class="menu-item">
                         <img src="img/desserts.png" alt="menu" class="menu-img">
                         <h2 class="name">Dessert</h2>
-                        <p class="text">A heavenly treat, indulgently sweet and perfectly<br> crafted to satisfy your cravings.</p>
+                        <p class="text">A heavenly treat, indulgently sweet and perfectly crafted to satisfy your cravings.</p>
                     </li>
 
                     <li class="menu-item">
                         <img src="img/refreshment.png" alt="menu" class="menu-img">
                         <h2 class="name">Red Ice Tea</h2>
-                        <p class="text">A fruity and refreshing iced tea served<br> perfectly chilled.</p>
+                        <p class="text">A fruity and refreshing iced tea served perfectly chilled.</p>
                     </li>
 
                     <li class="menu-item">
@@ -146,15 +146,12 @@
         <div class=".slide music-content" id="music">
             <h2 class="section-title">Music</h2>
             <div class="section-content">
-                <iframe 
-                    class="soundcloud-player"
-                    width="1100px" 
-                    height="450px" 
-                    scrolling="no" 
-                    frameborder="no" 
-                    allow="autoplay" 
-                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1997038860&color=%234e461e&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-                </iframe>
+                <img src="img/waltz of four feet.png" alt="Waltz of Four Feet" class="music-img" data-audio="audio/Waltz of Four Left Feet.mp3">
+                <img src="img/multo.png" alt="Multo" class="music-img" data-audio="audio/Multo - Cup of Joe (Lyrics).mp3">
+                <img src="img/di na muli.png" alt="Di Na Muli" class="music-img" data-audio="audio/Di Na Muli (Official) - The Itchyworms.mp3">
+
+                <audio id="audio-player"></audio>
+
             </div>
         </div>
 
@@ -222,6 +219,26 @@
         }
         
         });
+        
+        const audioPlayer = document.getElementById("audio-player");
+
+        document.querySelectorAll(".music-img").forEach(img => {
+            img.addEventListener("click", function() {
+                const audioSrc = this.getAttribute("data-audio");
+
+                if (audioPlayer.src.includes(audioSrc)) {
+                    if (!audioPlayer.paused) {
+                        audioPlayer.pause();
+                        audioPlayer.currentTime = 0;
+                    } else {
+                        audioPlayer.play();
+                    } 
+                } else {
+                    audioPlayer.src = audioSrc;
+                    audioPlayer.play();
+                }
+            }); 
+        }); 
     </script>
 </body>
 </html>

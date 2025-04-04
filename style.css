@@ -4,10 +4,15 @@ html{
     scroll-behavior: smooth;
 }
 
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+    display: none; 
 }
 
 body{
@@ -32,9 +37,9 @@ body.sb-expanded{
 
 .name{
     text-align: center;
-    font-size: 35px;
+    font-size: 27px;
     font-family: "Poppins", sans-serif;
-    min-height: 80px;
+    min-height: 70px;
 }
 
 .text{
@@ -98,6 +103,7 @@ aside{
     background-color: #211F1A;
     border-radius: 5px;
     transition: width 0.5s ease-in-out;
+    z-index: 100;
 
 }
 
@@ -193,12 +199,10 @@ main{
 
 /* main content */
 .main-content {
-    /* background-image: linear-gradient(454deg, #4f4080, #9553ff); */
     background-color: #FBFFFF;
     height: 100vh;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: row;
     padding: 0 5%;
@@ -238,7 +242,8 @@ main{
 .main-content .section-content p{
     font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
-    max-width: 75%;
+    max-width: 65%;
+    margin-bottom: 25px;
 }
 
 .main-content .section-content .buttons{    
@@ -277,7 +282,6 @@ main{
 
 /* menu */
 .menu-content {
-    /* background-image: linear-gradient(454deg, #408060, #53ff9d); */
     background-color: #FBFFFF;
     height: auto;
     padding: 50px 0 100px;
@@ -307,14 +311,15 @@ main{
     border: 4px dashed #211F1A;
     border-radius: 25px;
     padding:25px;
-    max-height: 900px;
-    width: 500px;
+    max-height: 400px;
+    width: 350px;
     transition: 0.3s ease-in-out;
 }
 
 .menu-content .menu-list .menu-item:hover{
     background: #855A37;
     color: #FBFFFF;
+    transform: translateY(-10px);
     border: transparent;
 }
 
@@ -322,12 +327,16 @@ main{
 .menu-content .section-content .menu-list .menu-item .menu-img{
     max-width: 80%;
     aspect-ratio: 1;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+}
+
+.menu-list .menu-item .menu-img{
+    width: 150px;
+    height: 200px;
 }
 
 /* Job Posting */
 .job-content {
-    /* background-image: linear-gradient(454deg, #804040, #ff5353); */
     background-color: #FBFFFF;
     height: 100vh;
     padding: 50px 0 100px;
@@ -413,37 +422,28 @@ main{
 
 /* music */
 .music-content {
-    /* background-image: linear-gradient(454deg, #404080, #5353ff); */
     background-color: #FBFFFF;
     height: 100vh;
     padding: 50px 0 100px;
 }
 
-.music-content .soundcloud-text {
-    font-size: px; 
-    color: #cccccc;
-    line-break: anywhere;
-    word-break: normal;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; 
-    font-family: Interstate, Lucida Grande, Lucida Sans Unicode, 
-                 Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
-    font-weight: 100;
-}
 
 .music-content .section-content{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Ensures elements stack vertically */
 }
 
-.music-content .section-content iframe{
-    border: 20px solid #211F1A;
-    box-shadow: rgba(136, 144, 152, 0.2) 0px 8px 24px;
-    border-radius: 25px;
+.music-content .section-content .music-img{
+    transition: 0.3s ease-in-out; 
 }
+
+.music-content .section-content .music-img:hover{
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+
 
 
 
