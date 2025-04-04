@@ -146,11 +146,12 @@
         <div class=".slide music-content" id="music">
             <h2 class="section-title">Music</h2>
             <div class="section-content">
-                <img src="img/waltz of four feet.png" alt="Waltz of Four Feet" class="music-img" data-audio="audio/Waltz of Four Left Feet.mp3">
-                <img src="img/multo.png" alt="Multo" class="music-img" data-audio="audio/Multo - Cup of Joe (Lyrics).mp3">
-                <img src="img/di na muli.png" alt="Di Na Muli" class="music-img" data-audio="audio/Di Na Muli (Official) - The Itchyworms.mp3">
+                <img src="img/waltz of four feet.png" alt="Waltz of Four Feet" class="music-img" data-audio="audio/Waltz of Four Left Feet.mp3" onclick="toggleMusic(this)">
+                <img src="img/multo.png" alt="Multo" class="music-img" data-audio="audio/Multo - Cup of Joe (Lyrics).mp3" onclick="toggleMusic(this)">
+                <img src="img/di na muli.png" alt="Di Na Muli" class="music-img" data-audio="audio/Di Na Muli (Official) - The Itchyworms.mp3" onclick="toggleMusic(this)">
+        
 
-                <audio id="audio-player"></audio>
+                <audio id="musicPlayer"></audio>
 
             </div>
         </div>
@@ -220,25 +221,33 @@
         
         });
         
-        const audioPlayer = document.getElementById("audio-player");
+        let currentSong = null; // currently playing song
 
-        document.querySelectorAll(".music-img").forEach(img => {
-            img.addEventListener("click", function() {
-                const audioSrc = this.getAttribute("data-audio");
+        function toggleMusic(element) {
+            let musicPlayer = document.getElementById("musicPlayer");
+            let song = element.getAttribute("data-audio");  // Get the song from the data-audio attribute
 
-                if (audioPlayer.src.includes(audioSrc)) {
-                    if (!audioPlayer.paused) {
-                        audioPlayer.pause();
-                        audioPlayer.currentTime = 0;
-                    } else {
-                        audioPlayer.play();
-                    } 
-                } else {
-                    audioPlayer.src = audioSrc;
-                    audioPlayer.play();
-                }
-            }); 
-        }); 
+            // Stop the song if it's already playing
+            if (currentSong === song && !musicPlayer.paused) {
+                musicPlayer.pause();
+                musicPlayer.currentTime = 0;
+                currentSong = null;
+                element.classList.remove("active");
+            } else {
+                // Play the new song
+                musicPlayer.src = song;
+                musicPlayer.play().catch(error => console.log(error));
+                currentSong = song;
+
+                // Remove active class from all items
+                document.querySelectorAll(".music-img").forEach(item => {
+                    item.classList.remove("active");
+                });
+
+                // Add active class to the clicked song
+                element.classList.add("active");
+            }
+        }
     </script>
 </body>
 </html>
